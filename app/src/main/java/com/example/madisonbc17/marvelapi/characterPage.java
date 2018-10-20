@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 public class characterPage extends AppCompatActivity {
     public static TextView data;
-    //public static int done = 0;
     public static ProgressBar wait;
 
     Button clickHome;
@@ -21,10 +20,15 @@ public class characterPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_page);
+
+        //set textview data
         data = (TextView) findViewById(R.id.characterData);
+
+        //set up progress bar
         wait = (ProgressBar) findViewById(R.id.progressBar1);
         wait.setVisibility(View.GONE);
-        //wait.setVisibility(View.VISIBLE);
+
+        //set up functions to address when buttons are listened to
         configureHomeButton();
         configureGetCharacterDataButton();
 
@@ -32,6 +36,7 @@ public class characterPage extends AppCompatActivity {
 
     private void configureHomeButton() {
         clickHome = (Button) findViewById(R.id.backButton);
+        //when clicked, take the user back to the home page and finish the start activity
         clickHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,11 +50,10 @@ public class characterPage extends AppCompatActivity {
         getCharacterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //get the character data
+                //when the button is clicked, get the character data and fill the text view
                 wait.setVisibility(View.VISIBLE);
                 getCharacterData process = new getCharacterData();
                 process.execute();
-                //wait.setVisibility(View.GONE);
             }
         });
     }

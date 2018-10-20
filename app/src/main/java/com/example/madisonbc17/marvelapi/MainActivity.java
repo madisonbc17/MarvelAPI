@@ -13,9 +13,6 @@ public class MainActivity extends AppCompatActivity {
     Button click1;
     Button click2;
     private ProgressBar wait;
-    //private int status = 0;
-
-    //private Handler waitHandler = new Handler();
 
 
     @Override
@@ -23,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set progress bar for when info takes a while to load
         wait = (ProgressBar) findViewById(R.id.progressBar1);
 
+        //make sure it disappears until we want something to load or run in background
         wait.setVisibility(View.GONE);
-        //wait.setVisibility(View.VISIBLE);
 
-
+        //configure functions that handle event listeners on click for each button
         configureCharacterButton();
         configureEventButton();
     }
@@ -37,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         click1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //once the button is clicked, take the user to the character page
                 wait.setVisibility(View.VISIBLE);
-                //go to the character page
                 startActivity(new Intent(MainActivity.this, characterPage.class));
                 wait.setVisibility(View.GONE);
             }
@@ -50,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 wait.setVisibility(View.VISIBLE);
-                //go to the events page
+                //once the button is clicked, take user to the events page
                 startActivity(new Intent(MainActivity.this, eventPage.class));
                 wait.setVisibility(View.GONE);
             }
         });
     }
 }
+
+//did this update get on Github?

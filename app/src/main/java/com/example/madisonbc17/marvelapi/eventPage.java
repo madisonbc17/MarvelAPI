@@ -18,15 +18,22 @@ public class eventPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_page);
+
+        //set up the data for the text view
         data = (TextView) findViewById(R.id.eventData);
+        //set up a progress bar
         wait = (ProgressBar) findViewById(R.id.progressBar1);
+        //set set the progress bar to be invisible
         wait.setVisibility(View.GONE);
+
+        //configure functions for the buttons
         configureHomeButton();
         configureGetEventDataButton();
     }
 
     private void configureHomeButton() {
         clickHome = (Button) findViewById(R.id.backButton);
+        //when this button is clicked, take user back to home page
         clickHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,11 +47,11 @@ public class eventPage extends AppCompatActivity {
         getEventData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //get the event data
+                //when clicked get data for the text view
+                //set progress bar to show
                 wait.setVisibility(View.VISIBLE);
                 getEventData process = new getEventData();
                 process.execute();
-                //wait.setVisibility(View.GONE);
             }
         });
     }
